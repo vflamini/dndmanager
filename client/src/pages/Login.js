@@ -7,7 +7,10 @@ export default function Login() {
             <NavLink exact to="/playerlist" style={{display: "block"}}>
                 <button>Player Login</button>
             </NavLink>
-            <button>DM Login</button>
+            <NavLink exact to="/dm" style={{display: "block"}}>
+              <button>DM Login</button>
+            </NavLink>
+            
         </div>
       </>
     );

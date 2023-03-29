@@ -13,19 +13,24 @@ export default function Inventory({playerInfo}) {
     return (
       <>
         <div class="playerinfo">
-            <h2>{playerInfo.name}</h2>
-            <h3>{playerInfo.race}</h3>
-            <h4>{playerInfo.class}</h4>
-            Level: {playerInfo.level}
-            <br></br>
-            {playerInfo.exp}
-            <br></br>
-            Gold: {playerInfo.gold}
-            <br></br>
-            {expToNextLevel}
+          <h2>{playerInfo.name}</h2>
+          <h3>{playerInfo.race}</h3>
+          <h4>{playerInfo.class}</h4>
+          Level: {playerInfo.level}
+          <br></br>
+          {playerInfo.exp}/{expToNextLevel}
+          <br></br>
+          Gold: {playerInfo.gold}
+          <br></br>
         </div>
-        <div class="inventory">
-            
+        <div className="inventory">
+          {Object.keys(playerInfo.items).map(key => {
+              return (
+                  <div className="item">
+                      {key}
+                  </div>
+              );
+          })}
         </div>
       </>
     );

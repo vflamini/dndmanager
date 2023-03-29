@@ -12,10 +12,9 @@ export default function Player(props) {
         class: null,
         level: null,
         exp: null,
-        gold: null
+        gold: null,
+        items: {}
     })
-
-    
 
     useEffect(() => {
         const fetchPlayerData = async () => {
@@ -36,7 +35,34 @@ export default function Player(props) {
                 return;
             })
         }
+        const fetchItems = async () => {
+            await fetch(ip + '/api/get/items/item_owner/' + playerInfo.name)
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(item => {
+                    setPlayerInfo(prevInfo => ({
+                        ...prevInfo,
+                        items: {
+                            ...prevInfo.items,
+                            [item.item_name]: {
+                                id: item.item_id,
+                                owner: item.item_owner,
+                                effects: item.effects,
+                                equipped: item.equipped,
+                                type: item.item_type,
+                                is_hidden: item.is_hidden,
+                                access_diff: item.access_diff,
+                                price: item.price,
+                                amount: item.amount,
+                                notes: item.notes
+                            }
+                        }
+                    }))
+                })
+            })
+        }
         fetchPlayerData();
+        fetchItems();
     }, [])
     return (
       <>

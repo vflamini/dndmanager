@@ -4,6 +4,7 @@ import PlayerList from './pages/PlayerList';
 import CreatePlayer from './pages/CreatePlayer';
 import Player from './pages/Player';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import DungeonMaster from './DM/DungeonMaster';
 
 export default function App() {
     //const [player, setPlayer] = useState(null);
@@ -35,10 +36,6 @@ export default function App() {
     };
 
     const [player, setPlayer] = useSessionStorage('player', null);
-
-    useEffect(() => {
-      console.log('test');
-    }, [])
     
     const router = createBrowserRouter([
         {
@@ -56,6 +53,10 @@ export default function App() {
         {
           path: "/player",
           element: <Player player={player}/>
+        },
+        {
+          path: "/dm",
+          element: <DungeonMaster />
         }
     ])
 
