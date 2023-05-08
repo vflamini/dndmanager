@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {ip} from '../config/ip';
+import '../css/createplayer.scss';
 
 export default function CreatePlayer() {
 
@@ -37,7 +38,8 @@ export default function CreatePlayer() {
     }
     return (
         <>
-            <div style={{display: "flex"}}>
+            <div className="createplayer">
+                <h3 className="chrome">Create Your Player</h3>
                 <form onSubmit={handleSubmit}>
                     <label>
                         Name:

@@ -1,0 +1,69 @@
+.player-select-btn {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+  border: 2px solid black;
+  max-height: 10vh;
+  max-width: 100vw;
+  min-height: 100px;
+  min-width: 20%;
+  background: linear-gradient(-30deg, #3d0b0b 50%, #2b0808 50%);
+  color:white;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+}
+
+.player-select-btn::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #ad8585;
+  opacity: 0;
+  -webkit-transition: .2s opacity ease-in-out;
+  transition: .2s opacity ease-in-out;
+}
+
+.player-select-btn:active {
+  transform: scale(.96);
+}
+
+.player-select-btn:hover {
+    opacity: 0.6;
+}
+
+.create-btn {
+  position: relative;
+  display: inline-block;
+  margin: 5px;
+  border: 2px solid black;
+  max-height: 10vh;
+  max-width: 90vw;
+  min-height: 100px;
+  min-width: 30%;
+  background: linear-gradient(30deg, #3d0b0b 50%, #2b0808 50%);
+  color:white;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+}
+
+.create-btn::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #ad8585;
+  opacity: 0;
+  -webkit-transition: .2s opacity ease-in-out;
+  transition: .2s opacity ease-in-out;
+}
+
+.create-btn:active {
+  transform: scale(.96);
+}
+
+.create-btn:hover {
+    opacity: 0.6;
+}

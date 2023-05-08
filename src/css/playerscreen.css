@@ -1,0 +1,44 @@
+.player-tab {
+    display: flex;
+    border-bottom: 2px solid black;
+    margin-bottom: -1px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    font-family: 'Skranji', cursive;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px black, 0 0 1em grey, 0 0 0.2em grey;
+}
+
+.player-tab::-webkit-scrollbar {
+    display: none;
+    border: none;
+}
+
+.selected-tab {
+    background: rgb(95, 95, 95);
+    animation: grow 1s infinite;
+    border-radius: 10px;
+}
+
+#player {
+    height: 100vh;
+}
+
+#dm {
+    height: 100vh;
+}
+
+@keyframes grow{
+	0% {
+	  transform: scale(0.97);
+	}
+	50% {
+	  transform: scale(1);
+	}
+	100% {
+		transform: scale(0.97);
+	  }
+}

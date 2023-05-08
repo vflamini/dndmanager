@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Players from './tabs/Players';
+import NPCs from './tabs/NPCs';
 import {ip} from '../config/ip';
 import {expToLevel} from '../info/leveling';
 import Items from './tabs/Items';
 
 export default function DungeonMaster() {
-    const [players, setPlayers] = useState({})
+    const [players, setPlayers] = useState({});
+    const [npcs, setNPCs] = useState({});
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -59,21 +61,63 @@ export default function DungeonMaster() {
                                 }
                             }
                         }))
+                    } else if (npcs[item.item_owner]){
+                        setNPCs(prevNPCs => ({
+                            ...prevNPCs,
+                            [item.item_owner]: {
+                                ...prevNPCs[item.item_owner],
+                                items: {
+                                    ...prevNPCs[item.item_owner].items,
+                                    [item.item_name]: {
+                                        id: item.item_id,
+                                        owner: item.item_owner,
+                                        effects: item.effects,
+                                        equipped: item.equipped,
+                                        type: item.item_type,
+                                        is_hidden: item.is_hidden,
+                                        access_diff: item.access_diff,
+                                        price: item.price,
+                                        amount: item.amount,
+                                        notes: item.notes
+                                    }
+                                }
+                            }
+                        }))
                     }
-                    setLoading(false);
+                })
+                setLoading(false);
+            })
+        }
+        const fetchNPCs = async () => {
+            await fetch(ip + '/api/get/npcs')
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(npc => {
+                    setNPCs(prevNPCs => ({
+                        ...prevNPCs,
+                        [npc.full_name]: {
+                            name: npc.full_name,
+                            race: npc.race,
+                            class: npc.n_class,
+                            location: npc.char_location,
+                            notes: npc.notes,
+                            players_avail: npc.players_avail,
+                            items: {}
+                        }
+                    }))
                 })
             })
         }
         fetchPlayers();
+        fetchNPCs();
         fetchItems();
     }, [isLoading])
 
     return (
       <>
-      {console.log(players)}
-        <div id="player">
-            <Tabs>
-                <TabList>
+        <div id="dm">
+            <Tabs selectedTabClassName="selected-tab">
+                <TabList className="player-tab">
                     <Tab>
                         Players
                     </Tab>
@@ -98,7 +142,7 @@ export default function DungeonMaster() {
                     <Players players={players}/>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <NPCs npcs={npcs} players={players} />
                 </TabPanel>
                 <TabPanel>
                     <h2>Any content 2</h2>

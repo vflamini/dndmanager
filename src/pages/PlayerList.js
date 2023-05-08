@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {NavLink} from 'react-router-dom';
 import {ip} from '../config/ip';
+import '../css/playerlist.css';
 
 function PlayerList({setPlayer}) {
     const [players, setPlayers] = useState([]);
@@ -25,12 +26,12 @@ function PlayerList({setPlayer}) {
             {players.map(name => {
                 return(
                     <NavLink exact to="/player" style={{display: "block"}}>
-                        <button onClick={(e) => setPlayer(e.target.outerText)}>{name}</button>
+                        <button className="player-select-btn" onClick={(e) => setPlayer(e.target.outerText)}>{name}</button>
                     </NavLink>
                 );
             })}
             <NavLink exact to="/createplayer" style={{display: "block"}}>
-                <button>Create Player</button>
+                <button className="create-btn">Create Player</button>
             </NavLink>
         </>
     );

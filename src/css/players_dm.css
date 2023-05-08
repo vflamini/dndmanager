@@ -23,7 +23,7 @@
   }
   
   .inventory {
-    height: 75%;
+    height: 75vh;
     width: 100%;
     border-top: 2px solid black;
     display: flex;
@@ -42,10 +42,42 @@
   }
   
   .item {
-    height: 30%;
-    width: 20%;
+    max-height: 15vh;
+    min-height: 1%;
+    min-width: 5%;
+    max-width: 40vw;
     border: 2px solid black;
-    margin: 2px;
+    background: rgb(87, 82, 98, 0.8);
+    margin: 20px;
     padding: 2px;
-    font-size: 1vw;
+    font-size: 15px;
+    word-wrap: wrap;
+    font-family: 'Skranji', cursive;
+    color: white;
+    box-shadow: 1px 1px 2px black, 0 0 .25em black, 0 0 0.2em grey;
+    user-select: none;
+  }
+
+  @media (max-width: 1080px) {
+    .item {
+        max-height: 15vh;
+        min-height: 1%;
+        min-width: 5%;
+        max-width: 40vw;
+        border: 2px solid black;
+        background: rgb(87, 82, 98, 0.8);
+        margin: 20px;
+        padding: 2px;
+        font-size: 250%;
+        word-wrap: wrap;
+        font-family: 'Skranji', cursive;
+        color: white;
+        box-shadow: 1px 1px 2px black, 0 0 .25em black, 0 0 0.2em grey;
+        user-select: none;
+    }
+}
+
+  .item:active {
+    transform: scale(0.96);
+    box-shadow: 1px 1px 1px black, 0 0 .1em black, 0 0 0.2em grey;
   }

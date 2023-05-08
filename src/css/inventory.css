@@ -1,14 +1,87 @@
 .playerinfo {
     padding-left: 5px;
+    color: black;
+    background: rgb(87, 82, 98, 0.8);
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    font-family: 'Skranji', cursive;
+    letter-spacing: 5px;
+    text-shadow: 1px 1px 2px black, 0 0 .25em grey, 0 0 0.2em grey;
+    text-align: left;
+    animation: shadow-bulge 2s infinite;
 }
-h2 {
+.playerinfo h2 {
     margin: 1px;
+    font-size: 50px;
+    offset-position: 0px 10px;
 }
 
-h3 {
+.playerinfo h3 {
     margin: 1px;
+    color: rgb(183, 183, 183);
 }
 
-h4 {
+.playerinfo h4 {
     margin: 1px;
+    color: rgb(183, 183, 183);
+}
+
+@keyframes shadow-bulge {
+    0% {
+        text-shadow: 1px 1px 2px black, 0 0 .25em grey, 0 0 0.2em grey;
+    }
+    50% {
+        text-shadow: 1px 1px 1px black, 0 0 0.1em grey, 0 0 0.1em grey;
+    }
+    0% {
+        text-shadow: 1px 1px 2px black, 0 0 .25em grey, 0 0 0.2em grey;
+    }
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 500ms ease-in-out;
+    }
+
+    .ReactModal__Overlay--after-open {
+    opacity: 1;
+    transform: translateX(0px);
+    }
+
+    .ReactModal__Overlay--before-close {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.cancel-modal-btn {
+    background: red;
+    box-shadow: 1px 1px 2px black, 0 0 .25em black, 0 0 0.2em grey;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 .25em grey, 0 0 0.2em grey;
+    text-align: center;
+    height: 7vh;
+    width: 18vw;
+    font-family: 'Skranji', cursive;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.cancel-modal-btn:active {
+    background: rgba(255, 0, 0, 0.351);
+    box-shadow: 1px 1px 1px black, 0 0 .1em black, 0 0 0.1em grey;
+    text-shadow: 1px 1px 1px black, 0 0 .1em grey, 0 0 0.1em grey;
+    transform: scale(0.96);
+}
+
+.item-popup {
+    overflow-x: hidden;
+    text-align: center;
+    font-family: 'Skranji', cursive;
+}
+
+.item-popup img {
+    transform: scale(0.75);
+    margin-left: -50px;
 }
